@@ -26,6 +26,14 @@ class HotkeyManager {
     }
 
     static ConvertModifiers(modifiers) {
+        modifiers := StrReplace(modifiers, "LAlt", "<!")
+        modifiers := StrReplace(modifiers, "RAlt", ">!")
+        modifiers := StrReplace(modifiers, "LCtrl", "<^")
+        modifiers := StrReplace(modifiers, "RCtrl", ">^")
+        modifiers := StrReplace(modifiers, "LShift", "<+")
+        modifiers := StrReplace(modifiers, "RShift", ">+")
+        modifiers := StrReplace(modifiers, "LWin", "<#")
+        modifiers := StrReplace(modifiers, "RWin", ">#")
         modifiers := StrReplace(modifiers, "Ctrl", "^")
         modifiers := StrReplace(modifiers, "Alt", "!")
         modifiers := StrReplace(modifiers, "Shift", "+")
