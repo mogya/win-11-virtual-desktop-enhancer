@@ -36,29 +36,35 @@ ReadIni(iniPath) {
                 value := match[2]
                 if (currentSection = "General") {
                     switch key {
-                        case "GeneralDesktopWrapping":
+                        case "DesktopWrapping":
                             global GeneralDesktopWrapping := Integer(value)
-                        case "TooltipsEnabled":
+                    }
+                } else if (currentSection = "Tooltips") {
+                    switch key {
+                        case "Enabled":
                             global TooltipsEnabled := Integer(value)
-                        case "TooltipsLifespan":
+                        case "Lifespan":
                             global TooltipsLifespan := Integer(value)
-                        case "TooltipsFadeOutAnimationDuration":
+                        case "FadeOutAnimationDuration":
                             global TooltipsFadeOutAnimationDuration := Integer(value)
-                        case "TooltipsPositionX":
+                        case "PositionX":
                             global TooltipsPositionX := value
-                        case "TooltipsPositionY":
+                        case "PositionY":
                             global TooltipsPositionY := value
-                        case "TooltipsOnEveryMonitor":
+                        case "OnEveryMonitor":
                             global TooltipsOnEveryMonitor := Integer(value)
-                        case "TooltipsFontSize":
+                        case "FontSize":
                             global TooltipsFontSize := Integer(value)
-                        case "TooltipsFontInBold":
+                        case "FontInBold":
                             global TooltipsFontInBold := Integer(value)
-                        case "TooltipsFontColor":
+                        case "FontColor":
                             global TooltipsFontColor := value
-                        case "TooltipsBackgroundColor":
+                        case "BackgroundColor":
                             global TooltipsBackgroundColor := value
                     }
+                } else if (currentSection = "KeyboardShortcuts") {
+                    global KeyboardShortcuts
+                    KeyboardShortcuts[key] := value
                 }
             }
         }
@@ -101,7 +107,8 @@ ValidateSettings() {
     if !(TooltipsFontSize ~= "^\d+$")
         TooltipsFontSize := 11
     if !(TooltipsFontInBold ~= "^[01]$")
-        TooltipsFontInBold := 700
+        TooltipsFontInBold := 0
+    TooltipsFontInBold := TooltipsFontInBold ? 700 : 400
     if !(TooltipsFontColor ~= "^0x[0-9A-Fa-f]{1,6}$")
         TooltipsFontColor := "0xFFFFFF"
     if !(TooltipsBackgroundColor ~= "^0x[0-9A-Fa-f]{1,6}$")
