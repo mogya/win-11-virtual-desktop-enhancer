@@ -39,6 +39,7 @@ class HotkeyManager {
         modifiers := StrReplace(modifiers, "Shift", "+")
         modifiers := StrReplace(modifiers, "Win", "#")
         modifiers := StrReplace(modifiers, ",", "")
+        modifiers := StrReplace(modifiers, " ", "")
         return modifiers
     }
 
