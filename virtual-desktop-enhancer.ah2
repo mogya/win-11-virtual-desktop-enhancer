@@ -269,7 +269,8 @@ Main() {
     WallpaperManager.Initialize()
     HotkeyManager.Initialize()
     TooltipManager.Initialize()
-    ReadIni("settings.ini")
+    ReadIni(A_ScriptDir . "\settings.ini")
+    ValidateSettings()
     DesktopNamesManager.ValidateNames()
 
     A_TrayMenu.Delete()
